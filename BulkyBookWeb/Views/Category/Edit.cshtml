@@ -1,0 +1,44 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@* <h1>Create</h1> *@
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pd-2">
+            <h2 class="text-primary">Edit Category</h2>
+            <hr />
+        </div>
+
+        @* If want to display the summary, or all the errors at the top *@
+        <div asp-validation-summary="All"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            @* This is for the default error display on the page based on the Model*@
+            <span asp-validation-for="Name" class="text-danger"></span>  
+        </div>
+        <div class="mb-3">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            @* This is for the default error display on the page based on the Model*@
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@* This will allow to check for the validation on client side itself
+    Rather than checking on the server side
+*@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
